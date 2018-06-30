@@ -4,10 +4,10 @@
     
     <p>ステータス: {{ $task->status }}</p>
     <p>タスク名  : {{ $task->content }}</p>
-    {!! link_to_route('tasks.edit','編集',['id'=>$task->id]) !!}
+    {!! link_to_route('tasks.edit','編集',['id'=>$task->id], ['class' => 'btn btn-info']) !!}
     
     {!! Form::model($task,['route'=>['tasks.destroy',$task->id], 'method'=>'delete']) !!}   
-        {!! Form::submit('削除') !!}
+        {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
     
     {!! link_to_route('tasks.index','一覧へ戻る') !!}
