@@ -64,7 +64,9 @@ class TasksController extends Controller
         $task = Task::find($id);
         if (\Auth::id() === $task->user_id) {
         $this->validate($request, ['status' => 'required','content' => 'required|max:191',]);
-        $task->update(['status' => $request->status,'content' => $request->content,]);
+        $task->status = $request->status;
+        $task->content = $request->content;
+        $task->save();
         return redirect('/');
         }else{
            return redirect('/');
